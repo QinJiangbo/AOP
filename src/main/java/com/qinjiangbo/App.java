@@ -6,6 +6,6 @@ package com.qinjiangbo;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello, AOP");
+        System.out.println("Hello, AOP!");
     }
 }
