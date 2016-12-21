@@ -23,14 +23,14 @@ public class GitStaticProxy implements Service {
      * 记录方法执行前日志
      */
     private void logBefore() {
-        System.out.println(this.getClass().getName() + ">>>" + "before fork() invoked!");
+        System.out.println(this.getClass().getName() + " >>> " + "before fork() invoked!");
     }
 
     /**
      * 记录方法后日志
      */
     private void logAfter() {
-        System.out.println(this.getClass().getName() + ">>>" + "after fork() invoked!");
+        System.out.println(this.getClass().getName() + " >>> " + "after fork() invoked!");
     }
 
 }
