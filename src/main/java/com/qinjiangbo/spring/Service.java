@@ -8,5 +8,4 @@ public interface Service {
 
     void fork(String repository);
 
-    void star(String repository);
 }

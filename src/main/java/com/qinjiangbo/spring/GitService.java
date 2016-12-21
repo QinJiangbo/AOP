@@ -16,13 +16,4 @@ public class GitService implements Service {
         System.out.println("fork " + repository + " successfully!");
     }
 
-    /**
-     * 关注某个仓库
-     *
-     * @param repository
-     */
-    @Override
-    public void star(String repository) {
-        System.out.println("star " + repository + " successfully!");
-    }
 }
