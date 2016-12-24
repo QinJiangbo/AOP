@@ -10,6 +10,7 @@ public class GitCglibProxyTest {
 
     @Test
     public void testFork() {
-
+        Service service = new GitCglibProxy().getProxy(GitService.class);
+        service.fork("tomcat");
     }
 }
