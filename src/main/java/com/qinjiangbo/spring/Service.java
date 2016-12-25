@@ -1,4 +1,4 @@
-package com.qinjiangbo.spring.proxy;
+package com.qinjiangbo.spring;
 
 /**
  * @date: 21/12/2016 2:08 PM
