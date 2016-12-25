@@ -1,4 +1,4 @@
-package com.qinjiangbo.spring;
+package com.qinjiangbo.spring.proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

@@ -1,4 +1,4 @@
-package com.qinjiangbo.spring;
+package com.qinjiangbo.spring.proxy;
 
 import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
