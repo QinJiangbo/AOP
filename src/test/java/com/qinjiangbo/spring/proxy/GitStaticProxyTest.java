@@ -1,19 +1,19 @@
-package com.qinjiangbo.spring;
+package com.qinjiangbo.spring.proxy;
 
-import com.qinjiangbo.spring.proxy.GitJdkProxy;
 import com.qinjiangbo.spring.proxy.GitService;
+import com.qinjiangbo.spring.proxy.GitStaticProxy;
 import com.qinjiangbo.spring.proxy.Service;
 import org.junit.Test;
 
 /**
- * @date: 22/12/2016 6:39 PM
+ * @date: 21/12/2016 2:33 PM
  * @author: qinjiangbo@github.io
  */
-public class GitJdkProxyTest {
+public class GitStaticProxyTest {
 
     @Test
     public void testFork() {
-        Service service = new GitJdkProxy(new GitService()).getProxy();
+        Service service = new GitStaticProxy(new GitService());
         service.fork("tomcat");
     }
 }

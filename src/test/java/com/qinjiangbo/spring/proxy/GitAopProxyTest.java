@@ -1,4 +1,4 @@
-package com.qinjiangbo.spring;
+package com.qinjiangbo.spring.proxy;
 
 import com.qinjiangbo.spring.proxy.GitAopProxy;
 import com.qinjiangbo.spring.proxy.GitService;
