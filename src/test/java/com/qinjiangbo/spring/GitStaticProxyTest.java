@@ -2,6 +2,7 @@ package com.qinjiangbo.spring;
 
 import com.qinjiangbo.spring.proxy.GitService;
 import com.qinjiangbo.spring.proxy.GitStaticProxy;
+import com.qinjiangbo.spring.proxy.Service;
 import org.junit.Test;
 
 /**

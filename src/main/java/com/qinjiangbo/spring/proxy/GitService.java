@@ -1,7 +1,5 @@
 package com.qinjiangbo.spring.proxy;
 
-import com.qinjiangbo.spring.Service;
-
 /**
  * @date: 21/12/2016 2:11 PM
  * @author: qinjiangbo@github.io
