@@ -14,6 +14,7 @@ public class FileService {
         return true;
     }
 
+    @SysLog
     public boolean delete(String fileName) {
         System.out.println("delete " + fileName + " successfully!");
         return true;

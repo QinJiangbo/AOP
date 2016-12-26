@@ -14,10 +14,17 @@ import org.springframework.stereotype.Component;
 public class FileServiceAspect {
 
     @Around("execution(* com.qinjiangbo.spring.aop.FileService.*(..))")
-    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object exeAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         logBefore(proceedingJoinPoint);
         Object result = proceedingJoinPoint.proceed();
         logAfter(proceedingJoinPoint);
+        return result;
+    }
+
+    @Around("@annotation(SysLog)")
+    public Object tagAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("Log printed with @SysLog annotation.");
+        Object result = proceedingJoinPoint.proceed();
         return result;
     }
 
