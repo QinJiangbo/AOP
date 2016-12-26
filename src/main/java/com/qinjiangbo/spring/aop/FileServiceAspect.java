@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FileServiceAspect {
 
-    @Around("execution(* com.qinjiangbo.spring.aop.FileService.*(..))")
+    @Around("execution(* com.qinjiangbo.spring.aop.FileService.copy(..))")
     public Object exeAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         logBefore(proceedingJoinPoint);
         Object result = proceedingJoinPoint.proceed();

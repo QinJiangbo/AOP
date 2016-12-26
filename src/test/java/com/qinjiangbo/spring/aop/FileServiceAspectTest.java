@@ -21,6 +21,13 @@ public class FileServiceAspectTest {
     @Test
     public void testCopy() {
         FileService fileService = (FileService) applicationContext.getBean("fileService");
-        fileService.welcome();
+        fileService.copy("/Richard/home", "/root/home");
     }
+
+    @Test
+    public void testDelete() {
+        FileService fileService = (FileService) applicationContext.getBean("fileService");
+        fileService.delete("birthday");
+    }
+
 }
