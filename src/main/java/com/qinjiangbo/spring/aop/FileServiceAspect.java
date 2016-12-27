@@ -3,6 +3,7 @@ package com.qinjiangbo.spring.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,6 +27,11 @@ public class FileServiceAspect {
         System.out.println("Log printed with @SysLog annotation.");
         Object result = proceedingJoinPoint.proceed();
         return result;
+    }
+
+    @Before("execution(* com.qinjiangbo.spring.aop.FileService.*(..))")
+    public void exeBefore() throws Throwable {
+        System.out.println("@Before executed!");
     }
 
     /**
