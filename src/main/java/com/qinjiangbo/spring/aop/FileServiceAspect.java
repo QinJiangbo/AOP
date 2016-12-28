@@ -1,7 +1,7 @@
 package com.qinjiangbo.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -35,9 +35,9 @@ public class FileServiceAspect {
         System.out.println("@Before executed!");
     }
 
-    @AfterReturning("execution(* com.qinjiangbo.spring.aop.FileService.*(..))")
-    public void exeAfterReturning() throws Throwable {
-        System.out.println("@AfterReturning executed!");
+    @After("execution(* com.qinjiangbo.spring.aop.FileService.copy(..))")
+    public void exeAfter() throws Throwable {
+        System.out.println("@After executed!");
     }
 
     /**
