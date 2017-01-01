@@ -17,4 +17,8 @@ public class NamingService {
         System.out.println("touch successfully!");
         return true;
     }
+
+    public void welcome2017() {
+        System.out.println("Welcome 2017!");
+    }
 }
