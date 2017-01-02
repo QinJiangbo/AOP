@@ -30,4 +30,10 @@ public class FileServiceAspectTest {
         fileService.delete("birthday");
     }
 
+    @Test
+    public void testWelcome() {
+        FileService fileService = (FileService) applicationContext.getBean("fileService");
+        fileService.welcome();
+    }
+
 }

@@ -1,10 +1,7 @@
 package com.qinjiangbo.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -38,6 +35,16 @@ public class FileServiceAspect {
     @After("execution(* com.qinjiangbo.spring.aop.FileService.copy(..))")
     public void exeAfter() throws Throwable {
         System.out.println("@After executed!");
+    }
+
+    @Pointcut("execution(* com.qinjiangbo.spring.aop.FileService.welcome())")
+    public void welcome() {
+
+    }
+
+    @Before("welcome()")
+    public void beforeWelcome() {
+        System.out.println("@Before Welcome!");
     }
 
     /**
