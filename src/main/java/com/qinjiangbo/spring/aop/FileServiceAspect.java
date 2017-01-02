@@ -43,6 +43,11 @@ public class FileServiceAspect {
     }
 
     @Before("welcome()")
+    public void beforeWelcome2() {
+        System.out.println("@Before Welcome2!");
+    }
+
+    @Before("welcome()")
     public void beforeWelcome() {
         System.out.println("@Before Welcome!");
     }
