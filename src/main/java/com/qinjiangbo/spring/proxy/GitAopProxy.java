@@ -13,11 +13,11 @@ public class GitAopProxy implements MethodBeforeAdvice, AfterReturningAdvice {
 
     @Override
     public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
-        System.out.println(this.getClass().getName() + " >>> " + "before fork() invoked!");
+        System.out.println(this.getClass().getName() + " >>> " + "after fork() invoked!");
     }
 
     @Override
     public void before(Method method, Object[] args, Object target) throws Throwable {
-        System.out.println(this.getClass().getName() + " >>> " + "after fork() invoked!");
+        System.out.println(this.getClass().getName() + " >>> " + "before fork() invoked!");
     }
 }
