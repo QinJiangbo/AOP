@@ -39,7 +39,7 @@ public class PackageUtils {
                     if ("file".equals(protocol)) {
                         findClassName(classList, packageName, packagePath, recursive, annotation);
                     } else if ("jar".equals(protocol)) {
-                        findClassName(classList, packageName, url, recursive, annotation);
+                        findClassName(classList, packageName, url, annotation);
                     }
                 }
             }
@@ -88,10 +88,9 @@ public class PackageUtils {
      * @param classList
      * @param packageName
      * @param url
-     * @param recursive
      * @param annotation
      */
-    private static void findClassName(List<Class<?>> classList, String packageName, URL url, boolean recursive, Class<? extends Annotation> annotation) throws IOException {
+    private static void findClassName(List<Class<?>> classList, String packageName, URL url, Class<? extends Annotation> annotation) throws IOException {
         JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
         JarFile jarFile = jarURLConnection.getJarFile();
         Enumeration<JarEntry> jarEntries = jarFile.entries();
@@ -164,6 +163,6 @@ public class PackageUtils {
     }
 
     public static void main(String[] args) {
-        findClassList("org.springframework.context", true, null);
+        findClassList("javax.crypto.spec", true, null);
     }
 }
