@@ -1,5 +1,7 @@
 package com.qinjiangbo.aop.util;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.net.URL;
@@ -24,19 +26,18 @@ public class PackageUtils {
     public static List<Class<?>> findClassList(String packageName, boolean recursive, Class<? extends Annotation> annotation) {
         List<Class<?>> classList = new LinkedList<>();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        String packagePath = packageName.replace(".", "/");
+        String packagePath0 = packageName.replace(".", File.separator); // os related
         try {
-            Enumeration<URL> urls = classLoader.getResources(packagePath);
+            Enumeration<URL> urls = classLoader.getResources(packagePath0);
             while (urls.hasMoreElements()) {
                 URL url = urls.nextElement();
                 if (url != null) {
                     String protocol = url.getProtocol();
-                    String path = url.getPath();
-//                    System.out.println("protocol: " + protocol + "<-->path: " + path);
+                    String packagePath = url.getPath();
                     if ("file".equals(protocol)) {
-
+                        findClassName(classList, packageName, packagePath, recursive, annotation);
                     } else if ("jar".equals(protocol)) {
-
+                        findClassName(classList, packageName, url, recursive, annotation);
                     }
                 }
             }
@@ -56,6 +57,22 @@ public class PackageUtils {
      * @param annotation
      */
     private static void findClassName(List<Class<?>> classList, String packageName, String packagePath, boolean recursive, Class<? extends Annotation> annotation) {
+        if (classList == null) {
+            return;
+        }
+        File[] files = filterClassFiles(packagePath);
+        if (files != null) {
+            for (File file : files) {
+                String fileName = file.getName();
+                if (file.isFile()) {
+                    // .class files
+                    String className = getClassName(packageName, fileName);
+                    addClassName(classList, className, annotation);
+                } else {
+
+                }
+            }
+        }
 
     }
 
@@ -72,7 +89,65 @@ public class PackageUtils {
 
     }
 
+    /**
+     * filter the class files
+     *
+     * @param packagePath
+     */
+    private static File[] filterClassFiles(String packagePath) {
+        if (packagePath == null) {
+            return null;
+        }
+        return new File(packagePath).listFiles(file -> file.isFile() && file.getName().endsWith(".class") || file.isDirectory());
+    }
+
+    /**
+     * get class name by file name
+     *
+     * @param packageName
+     * @param fileName
+     * @return
+     */
+    private static String getClassName(String packageName, String fileName) {
+        int endIndex = fileName.lastIndexOf(".");
+        String clazz = null;
+        if (endIndex >= 0) {
+            clazz = fileName.substring(0, endIndex);
+        }
+        String className = null;
+        if (clazz != null) {
+            className = packageName + "." + clazz;
+        }
+        return className;
+    }
+
+    /**
+     * add class name to the class list
+     *
+     * @param classList
+     * @param className
+     * @param annotation
+     */
+    private static void addClassName(List<Class<?>> classList, String className, Class<? extends Annotation> annotation) {
+        if (classList != null && className != null) {
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(className);
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+
+            if (clazz != null) {
+                if (annotation == null) {
+                    classList.add(clazz);
+                } else if (clazz.isAnnotationPresent(annotation)) {
+                    classList.add(clazz);
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        findClassList("org.springframework.context", true, null);
+        findClassList("com.qinjiangbo.spring.proxy", true, null);
     }
 }
