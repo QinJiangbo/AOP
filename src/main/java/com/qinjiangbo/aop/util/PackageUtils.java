@@ -99,24 +99,8 @@ public class PackageUtils {
             JarEntry jarEntry = jarEntries.nextElement();
             String jarEntryName = jarEntry.getName(); // such as */*/*.class
             String className = jarEntryName.replace(File.separator, ".");
-            System.out.println("@" + jarEntryName);
-            int endIndex = className.lastIndexOf(".");
-            String prefix = null;
-            if (endIndex > 0) {
-                String prefixName = className.substring(0, endIndex);
-                endIndex = prefixName.lastIndexOf(".");
-                if (endIndex > 0) {
-                    prefix = prefixName.substring(0, endIndex);
-                }
-            }
-
-            if (prefix != null && jarEntryName.endsWith(".class")) {
-//                System.out.println("prefix: " + prefix + " ==> " + " packageName: " + packageName);
-//                if (prefix.equals(packageName)) {
-//                    addClassName(classList, className, annotation);
-//                } else if (recursive && prefix.startsWith(packageName)) {
-//                    addClassName(classList, className, annotation);
-//                }
+            if (className.endsWith(".class") && className.startsWith(packageName)) {
+                addClassName(classList, className, annotation);
             }
         }
     }
