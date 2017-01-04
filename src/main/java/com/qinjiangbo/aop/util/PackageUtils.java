@@ -163,6 +163,9 @@ public class PackageUtils {
     }
 
     public static void main(String[] args) {
-        findClassList("javax.crypto.spec", true, null);
+        List<Class<?>> classList = findClassList("com.qinjiangbo.spring", true, null);
+        for (Class c : classList) {
+            System.out.println(c.getName());
+        }
     }
 }
