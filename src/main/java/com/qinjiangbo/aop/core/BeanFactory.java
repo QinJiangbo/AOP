@@ -5,4 +5,6 @@ package com.qinjiangbo.aop.core;
  * @author: qinjiangbo@github.io
  */
 public class BeanFactory {
+
+
 }
