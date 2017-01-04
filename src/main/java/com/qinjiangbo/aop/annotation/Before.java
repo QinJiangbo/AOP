@@ -10,4 +10,5 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Before {
+    String value();
 }
