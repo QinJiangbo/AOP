@@ -3,10 +3,13 @@ package com.qinjiangbo.aop.util;
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * @date: 04/01/2017 11:12 PM
@@ -88,8 +91,34 @@ public class PackageUtils {
      * @param recursive
      * @param annotation
      */
-    private static void findClassName(List<Class<?>> classList, String packageName, URL url, boolean recursive, Class<? extends Annotation> annotation) {
+    private static void findClassName(List<Class<?>> classList, String packageName, URL url, boolean recursive, Class<? extends Annotation> annotation) throws IOException {
+        JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
+        JarFile jarFile = jarURLConnection.getJarFile();
+        Enumeration<JarEntry> jarEntries = jarFile.entries();
+        while (jarEntries.hasMoreElements()) {
+            JarEntry jarEntry = jarEntries.nextElement();
+            String jarEntryName = jarEntry.getName(); // such as */*/*.class
+            String className = jarEntryName.replace(File.separator, ".");
+            System.out.println("@" + jarEntryName);
+            int endIndex = className.lastIndexOf(".");
+            String prefix = null;
+            if (endIndex > 0) {
+                String prefixName = className.substring(0, endIndex);
+                endIndex = prefixName.lastIndexOf(".");
+                if (endIndex > 0) {
+                    prefix = prefixName.substring(0, endIndex);
+                }
+            }
 
+            if (prefix != null && jarEntryName.endsWith(".class")) {
+//                System.out.println("prefix: " + prefix + " ==> " + " packageName: " + packageName);
+//                if (prefix.equals(packageName)) {
+//                    addClassName(classList, className, annotation);
+//                } else if (recursive && prefix.startsWith(packageName)) {
+//                    addClassName(classList, className, annotation);
+//                }
+            }
+        }
     }
 
     /**
@@ -151,6 +180,6 @@ public class PackageUtils {
     }
 
     public static void main(String[] args) {
-        findClassList("com.qinjiangbo.spring.proxy", true, null);
+        findClassList("org.springframework.context", true, null);
     }
 }
