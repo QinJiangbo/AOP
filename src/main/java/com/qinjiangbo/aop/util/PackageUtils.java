@@ -69,7 +69,11 @@ public class PackageUtils {
                     String className = getClassName(packageName, fileName);
                     addClassName(classList, className, annotation);
                 } else {
-
+                    if (recursive) {
+                        String subPackageName = packageName + "." + fileName;
+                        String subPackagePath = packagePath + File.separator + fileName;
+                        findClassName(classList, subPackageName, subPackagePath, recursive, annotation);
+                    }
                 }
             }
         }
