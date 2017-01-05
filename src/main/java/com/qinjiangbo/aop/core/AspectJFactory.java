@@ -1,7 +1,6 @@
 package com.qinjiangbo.aop.core;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @date: 05/01/2017 6:08 PM
@@ -35,6 +34,5 @@ public class AspectJFactory {
         // invoke beanFactory's method
         return beanFactory.filterAspectJs();
     }
-
 
 }
