@@ -3,6 +3,8 @@ package com.qinjiangbo.aop.core;
 import com.qinjiangbo.aop.annotation.Service;
 import com.qinjiangbo.aop.config.ContextConfig;
 import com.qinjiangbo.aop.demo.A;
+import com.qinjiangbo.aop.demo.B;
+import com.qinjiangbo.aop.util.BeanUtils;
 import com.qinjiangbo.aop.util.PackageUtils;
 
 import java.util.List;
@@ -44,14 +46,31 @@ public class ApplicationContext {
      * @return
      */
     public <T> T getBean(String name, Class<T> clazz) {
-        System.out.println(beanFactory.getBean(name));
-        return null;
+        Class<?> clazz0 = beanFactory.getBean(name);
+        return BeanUtils.getBean(name, clazz0, clazz);
+    }
+
+    /**
+     * get bean by name and type if parameters provided
+     *
+     * @param name
+     * @param clazz
+     * @param args
+     * @param <T>
+     * @return
+     */
+    public <T> T getBean(String name, Class<T> clazz, Object... args) {
+        Class<?> clazz0 = beanFactory.getBean(name);
+        return BeanUtils.getBean(name, clazz0, clazz, args);
     }
 
     public static void main(String[] args) {
         ContextConfig config = new ContextConfig();
         config.setPackages("com.qinjiangbo.aop.demo;com.qinjiangbo.aop.demo2");
         ApplicationContext applicationContext = new ApplicationContext(config);
-        applicationContext.getBean("b", A.class);
+        A a = applicationContext.getBean("a", A.class);
+        System.out.println(a.toString());
+        B b = applicationContext.getBean("b", B.class, "Amy");
+        System.out.println(b.toString());
     }
 }
