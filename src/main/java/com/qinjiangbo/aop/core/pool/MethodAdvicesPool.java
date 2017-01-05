@@ -1,5 +1,6 @@
 package com.qinjiangbo.aop.core.pool;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,21 @@ import java.util.Map;
 public class MethodAdvicesPool {
 
     private Map<String, List> methodAdvicesMap;
+    private static MethodAdvicesPool INSTANCE;
 
+    private MethodAdvicesPool(){
+        methodAdvicesMap = new HashMap<>();
+    }
 
+    public static MethodAdvicesPool getInstance() {
+        if (INSTANCE == null) {
+            synchronized (MethodAdvicesPool.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new MethodAdvicesPool();
+                }
+            }
+        }
+        return INSTANCE;
+    }
 
 }
