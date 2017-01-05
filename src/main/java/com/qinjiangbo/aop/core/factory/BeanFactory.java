@@ -1,6 +1,6 @@
 package com.qinjiangbo.aop.core.factory;
 
-import com.qinjiangbo.aop.annotation.AspectJ;
+import com.qinjiangbo.aop.annotation.Aspect;
 import com.qinjiangbo.aop.exception.ConflictedBeanException;
 
 import java.util.*;
@@ -74,7 +74,7 @@ public class BeanFactory {
     }
 
     /**
-     * filter AspectJ classes
+     * filter Aspect classes
      *
      * @return
      */
@@ -82,7 +82,7 @@ public class BeanFactory {
         List<Class<?>> classes = (List<Class<?>>) classMap.values();
         List<Class<?>> aspectjs = new LinkedList<>();
         for (Class<?> clazz : classes) {
-            if (clazz.isAnnotationPresent(AspectJ.class)) {
+            if (clazz.isAnnotationPresent(Aspect.class)) {
                 aspectjs.add(clazz);
             }
         }

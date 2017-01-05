@@ -15,21 +15,21 @@ import java.util.List;
  * @date: 05/01/2017 6:08 PM
  * @author: qinjiangbo@github.io
  */
-public class AspectJFactory {
+public class AspectFactory {
     private BeanFactory beanFactory;
-    private static AspectJFactory INSTANCE = null;
+    private static AspectFactory INSTANCE = null;
     private List<Class<?>> aspectjs;
 
-    private AspectJFactory() {
+    private AspectFactory() {
         beanFactory = BeanFactory.getInstance();
         aspectjs = beanFactory.filterAspectJs();
     }
 
-    public static AspectJFactory getInstance() {
+    public static AspectFactory getInstance() {
         if (INSTANCE == null) {
-            synchronized (AspectJFactory.class) {
+            synchronized (AspectFactory.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new AspectJFactory();
+                    INSTANCE = new AspectFactory();
                 }
             }
         }
@@ -41,7 +41,7 @@ public class AspectJFactory {
     }
 
     /**
-     * parse annotations in AspectJ class
+     * parse annotations in Aspect class
      * @param clazz
      */
     private void processAspectJAdvice(Class<?> clazz) {
@@ -49,7 +49,7 @@ public class AspectJFactory {
         List<Class<? extends Annotation>> annotations
                 = CollectionUtils.newLinkedList(After.class, Around.class, Before.class);
         methodList = AnnotationUtils.filterAnnotatedMethods(methodList, annotations);
-
+        // TO-DO
     }
 
     /**
@@ -63,7 +63,7 @@ public class AspectJFactory {
      * </code>
      */
     private void parseAnnotatedAdviceExpression() {
-
+        // TO-DO
     }
 
     /**
@@ -77,7 +77,7 @@ public class AspectJFactory {
      * </code>
      */
     private void parseExecutedAdviceExpression() {
-
+        // TO-DO
     }
 
 }
