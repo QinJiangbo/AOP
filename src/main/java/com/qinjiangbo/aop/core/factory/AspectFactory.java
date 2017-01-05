@@ -53,7 +53,7 @@ public class AspectFactory {
     }
 
     /**
-     * parse advice expression starting with "@"
+     * parse intercept expression starting with "@"
      * eg.<code>
      *
      * @Before("@SysLog")
@@ -67,7 +67,7 @@ public class AspectFactory {
     }
 
     /**
-     * parse advice expression with executions
+     * parse intercept expression with executions
      * eg.<code>
      *
      * @Before("com.qinjiangbo.aop.demo.*")
