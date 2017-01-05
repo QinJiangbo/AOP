@@ -44,7 +44,7 @@ public class ApplicationContext {
      * @return
      */
     public <T> T getBean(String name, Class<T> clazz) {
-        System.out.println(beanFactory.getBean(name).getSimpleName());
+        System.out.println(beanFactory.getBean(name));
         return null;
     }
 
@@ -52,6 +52,6 @@ public class ApplicationContext {
         ContextConfig config = new ContextConfig();
         config.setPackages("com.qinjiangbo.aop.demo;com.qinjiangbo.aop.demo2");
         ApplicationContext applicationContext = new ApplicationContext(config);
-        applicationContext.getBean("a", A.class);
+        applicationContext.getBean("b", A.class);
     }
 }
