@@ -57,7 +57,8 @@ public class AspectJFactory {
      * parse advice expression starting with "@"
      * eg.<code>
      *
-     * @Before("@SysLog") public void logBefore(){
+     * @Before("@SysLog")
+     * public void logBefore(){
      * ....
      * }
      * </code>
@@ -70,7 +71,8 @@ public class AspectJFactory {
      * parse advice expression with executions
      * eg.<code>
      *
-     * @Before("com.qinjiangbo.aop.demo.*") public void logBefore() {
+     * @Before("com.qinjiangbo.aop.demo.*")
+     * public void logBefore() {
      * ...
      * }
      * </code>
