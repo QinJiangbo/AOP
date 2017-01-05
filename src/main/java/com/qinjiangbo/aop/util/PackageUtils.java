@@ -1,5 +1,7 @@
 package com.qinjiangbo.aop.util;
 
+import com.qinjiangbo.aop.annotation.Bean;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -163,7 +165,7 @@ public class PackageUtils {
     }
 
     public static void main(String[] args) {
-        List<Class<?>> classList = findClassList("com.qinjiangbo.spring", true, null);
+        List<Class<?>> classList = findClassList("com.qinjiangbo.spring", true, Bean.class);
         for (Class c : classList) {
             System.out.println(c.getName());
         }
