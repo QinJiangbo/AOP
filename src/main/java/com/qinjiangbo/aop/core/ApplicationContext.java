@@ -1,6 +1,8 @@
 package com.qinjiangbo.aop.core;
 
+import com.qinjiangbo.aop.annotation.Bean;
 import com.qinjiangbo.aop.config.ContextConfig;
+import com.qinjiangbo.aop.util.PackageUtils;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class ApplicationContext {
 
     public ApplicationContext(ContextConfig contextConfig) {
         this.contextConfig = contextConfig;
+        beanFactory = BeanFactory.getInstance();
     }
 
     /**
@@ -23,7 +26,7 @@ public class ApplicationContext {
     private void scanPackages() {
         List<String> packages = contextConfig.getPackages();
         for (String package0 : packages) {
-
+            beanFactory.addClasses(PackageUtils.findClassList(package0, true, Bean.class));
         }
     }
 }

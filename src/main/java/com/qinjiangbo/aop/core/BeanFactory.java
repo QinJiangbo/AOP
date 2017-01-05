@@ -9,7 +9,27 @@ import java.util.List;
  */
 public class BeanFactory {
 
+    private static BeanFactory INSTANCE = null;
     private List<Class<?>> classList = new LinkedList<>();
+
+    private BeanFactory() {
+    }
+
+    /**
+     * get the singleton instances
+     *
+     * @return
+     */
+    public static BeanFactory getInstance() {
+        if (INSTANCE == null) {
+            synchronized (BeanFactory.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new BeanFactory();
+                }
+            }
+        }
+        return INSTANCE;
+    }
 
     /**
      * add scanned classes
