@@ -1,11 +1,9 @@
 package com.qinjiangbo.aop.core;
 
+import com.qinjiangbo.aop.annotation.AspectJ;
 import com.qinjiangbo.aop.exception.ConflictedBeanException;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @date: 03/01/2017 11:34 AM
@@ -73,5 +71,21 @@ public class BeanFactory {
      */
     public void clearClassList() {
         classList = null;
+    }
+
+    /**
+     * filter AspectJ classes
+     *
+     * @return
+     */
+    public List<Class<?>> filterAspectJs() {
+        List<Class<?>> classes = (List<Class<?>>) classMap.values();
+        List<Class<?>> aspectjs = new LinkedList<>();
+        for (Class<?> clazz : classes) {
+            if (clazz.isAnnotationPresent(AspectJ.class)) {
+                aspectjs.add(clazz);
+            }
+        }
+        return aspectjs;
     }
 }
