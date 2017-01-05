@@ -37,7 +37,7 @@ public class AspectJFactory {
         return INSTANCE;
     }
 
-    public void parseAdvices() {
+    public void processAdvices() {
 
     }
 
@@ -45,11 +45,37 @@ public class AspectJFactory {
      * parse annotations in AspectJ class
      * @param clazz
      */
-    private void parseAspectJAdvice(Class<?> clazz) {
+    private void processAspectJAdvice(Class<?> clazz) {
         List<Method> methodList = ReflectionUtils.findAnnotatedMethods(clazz);
         List<Class<? extends Annotation>> annotations
                 = CollectionUtils.newLinkedList(After.class, Around.class, Before.class);
         methodList = AnnotationUtils.filterAnnotatedMethods(methodList, annotations);
+
+    }
+
+    /**
+     * parse advice expression starting with "@"
+     * eg.<code>
+     *
+     * @Before("@SysLog") public void logBefore(){
+     * ....
+     * }
+     * </code>
+     */
+    private void parseAnnotatedAdviceExpression() {
+
+    }
+
+    /**
+     * parse advice expression with executions
+     * eg.<code>
+     *
+     * @Before("com.qinjiangbo.aop.demo.*") public void logBefore() {
+     * ...
+     * }
+     * </code>
+     */
+    private void parseExecutedAdviceExpression() {
 
     }
 
