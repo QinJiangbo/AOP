@@ -1,11 +1,11 @@
 package com.qinjiangbo.aop.demo;
 
-import com.qinjiangbo.aop.annotation.Bean;
+import com.qinjiangbo.aop.annotation.Service;
 
 /**
  * @date: 05/01/2017 1:30 PM
  * @author: qinjiangbo@github.io
  */
-@Bean
+@Service
 public class A {
 }

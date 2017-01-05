@@ -1,6 +1,6 @@
 package com.qinjiangbo.aop.core;
 
-import com.qinjiangbo.aop.annotation.Bean;
+import com.qinjiangbo.aop.annotation.Service;
 import com.qinjiangbo.aop.config.ContextConfig;
 import com.qinjiangbo.aop.demo.A;
 import com.qinjiangbo.aop.util.PackageUtils;
@@ -29,7 +29,7 @@ public class ApplicationContext {
     private void scanPackages() {
         List<String> packages = contextConfig.getPackages();
         for (String package0 : packages) {
-            beanFactory.addClasses(PackageUtils.findClassList(package0, true, Bean.class));
+            beanFactory.addClasses(PackageUtils.findClassList(package0, true, Service.class));
         }
         beanFactory.mapClasses();
         beanFactory.clearClassList();
