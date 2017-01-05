@@ -29,4 +29,8 @@ public class ApplicationContext {
             beanFactory.addClasses(PackageUtils.findClassList(package0, true, Bean.class));
         }
     }
+
+    public <T> T getBean(String name, Class<T> clazz) {
+        return null;
+    }
 }

@@ -27,7 +27,7 @@ public class ContextConfig {
      * @param packages0
      */
     public void setPackages(String packages0) {
-        String[] packageArr = packages0.split(",");
+        String[] packageArr = packages0.split(",|;|&");
         this.packages = new LinkedList<>();
         for (String packagge : packageArr) {
             if (!this.packages.contains(packagge)) {
