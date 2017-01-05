@@ -13,8 +13,4 @@ public class ConflictedBeanException extends RuntimeException {
         super(message);
     }
 
-    public ConflictedBeanException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
 }
