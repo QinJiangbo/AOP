@@ -7,7 +7,7 @@ import java.util.List;
  * @date: 03/01/2017 3:21 PM
  * @author: qinjiangbo@github.io
  */
-public class ContextConfig {
+public class ContextConfiguration {
 
     // packages to be scanned
     private List<String> packages;

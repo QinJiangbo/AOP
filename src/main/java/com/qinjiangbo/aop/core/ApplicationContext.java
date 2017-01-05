@@ -1,7 +1,7 @@
 package com.qinjiangbo.aop.core;
 
 import com.qinjiangbo.aop.annotation.Service;
-import com.qinjiangbo.aop.config.ContextConfig;
+import com.qinjiangbo.aop.config.ContextConfiguration;
 import com.qinjiangbo.aop.demo.A;
 import com.qinjiangbo.aop.demo.B;
 import com.qinjiangbo.aop.util.BeanUtils;
@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class ApplicationContext {
 
-    private ContextConfig contextConfig;
+    private ContextConfiguration contextConfig;
     private BeanFactory beanFactory;
 
-    public ApplicationContext(ContextConfig contextConfig) {
+    public ApplicationContext(ContextConfiguration contextConfig) {
         this.contextConfig = contextConfig;
         beanFactory = BeanFactory.getInstance();
         // scan packages
@@ -65,7 +65,7 @@ public class ApplicationContext {
     }
 
     public static void main(String[] args) {
-        ContextConfig config = new ContextConfig();
+        ContextConfiguration config = new ContextConfiguration();
         config.setPackages("com.qinjiangbo.aop.demo;com.qinjiangbo.aop.demo2");
         ApplicationContext applicationContext = new ApplicationContext(config);
         A a = applicationContext.getBean("a", A.class);
