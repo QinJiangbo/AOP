@@ -1,5 +1,15 @@
 package com.qinjiangbo.aop.core;
 
+import com.qinjiangbo.aop.annotation.After;
+import com.qinjiangbo.aop.annotation.Around;
+import com.qinjiangbo.aop.annotation.Before;
+import com.qinjiangbo.aop.util.AnnotationUtils;
+import com.qinjiangbo.aop.util.CollectionUtils;
+import com.qinjiangbo.aop.util.ReflectionUtils;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,9 +19,11 @@ import java.util.List;
 public class AspectJFactory {
     private BeanFactory beanFactory;
     private static AspectJFactory INSTANCE = null;
+    private List<Class<?>> aspectjs;
 
     private AspectJFactory() {
         beanFactory = BeanFactory.getInstance();
+        aspectjs = beanFactory.filterAspectJs();
     }
 
     public static AspectJFactory getInstance() {
@@ -25,14 +37,20 @@ public class AspectJFactory {
         return INSTANCE;
     }
 
+    public void parseAdvices() {
+
+    }
+
     /**
-     * filter the AspectJ classes
-     *
-     * @return
+     * parse annotations in AspectJ class
+     * @param clazz
      */
-    private List<Class<?>> filterAspectJs() {
-        // invoke beanFactory's method
-        return beanFactory.filterAspectJs();
+    private void parseAspectJAdvice(Class<?> clazz) {
+        List<Method> methodList = ReflectionUtils.findAnnotatedMethods(clazz);
+        List<Class<? extends Annotation>> annotations
+                = CollectionUtils.newLinkedList(After.class, Around.class, Before.class);
+        methodList = AnnotationUtils.filterAnnotatedMethods(methodList, annotations);
+
     }
 
 }
