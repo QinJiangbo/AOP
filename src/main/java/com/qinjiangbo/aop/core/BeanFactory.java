@@ -1,10 +1,21 @@
 package com.qinjiangbo.aop.core;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @date: 03/01/2017 11:34 AM
  * @author: qinjiangbo@github.io
  */
 public class BeanFactory {
 
+    private List<Class<?>> classList = new LinkedList<>();
+
+    /**
+     * add scanned classes
+     */
+    public void addClasses(List<Class<?>> classList) {
+        this.classList.addAll(classList);
+    }
 
 }
