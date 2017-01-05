@@ -7,5 +7,5 @@ import com.qinjiangbo.aop.annotation.Bean;
  * @author: qinjiangbo@github.io
  */
 @Bean
-public class A {
+public class D {
 }

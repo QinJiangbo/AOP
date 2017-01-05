@@ -41,24 +41,21 @@ public class BeanFactory {
      */
     public void addClasses(List<Class<?>> classList) {
         this.classList.addAll(classList);
-        mapClasses();
     }
 
     /**
      * map the classes
      */
-    private void mapClasses() {
+    public void mapClasses() {
         for (Class<?> clazz : classList) {
             String className = clazz.getSimpleName().substring(0, 1).toLowerCase()
                     + clazz.getSimpleName().substring(1);
             if (classMap.containsKey(className)) {
                 throw new ConflictedBeanException(className + " for class " + clazz.getName()
-                        + " already exists!");
+                        + " conflicts with " + classMap.get(className).getName());
             }
             classMap.put(className, clazz);
         }
-        // release the resource, waiting for GC
-        classList = null;
     }
 
     /**
@@ -71,4 +68,10 @@ public class BeanFactory {
         return classMap.get(name);
     }
 
+    /**
+     * clear the class list, waiting for GC
+     */
+    public void clearClassList() {
+        classList = null;
+    }
 }

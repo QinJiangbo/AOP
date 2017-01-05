@@ -31,6 +31,8 @@ public class ApplicationContext {
         for (String package0 : packages) {
             beanFactory.addClasses(PackageUtils.findClassList(package0, true, Bean.class));
         }
+        beanFactory.mapClasses();
+        beanFactory.clearClassList();
     }
 
     /**
