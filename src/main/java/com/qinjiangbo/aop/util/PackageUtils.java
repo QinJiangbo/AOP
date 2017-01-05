@@ -1,7 +1,5 @@
 package com.qinjiangbo.aop.util;
 
-import com.qinjiangbo.aop.annotation.Bean;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;

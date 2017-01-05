@@ -2,6 +2,7 @@ package com.qinjiangbo.aop.core;
 
 import com.qinjiangbo.aop.annotation.Bean;
 import com.qinjiangbo.aop.config.ContextConfig;
+import com.qinjiangbo.aop.demo.A;
 import com.qinjiangbo.aop.util.PackageUtils;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class ApplicationContext {
     public ApplicationContext(ContextConfig contextConfig) {
         this.contextConfig = contextConfig;
         beanFactory = BeanFactory.getInstance();
+        // scan packages
+        scanPackages();
     }
 
     /**
@@ -30,7 +33,23 @@ public class ApplicationContext {
         }
     }
 
+    /**
+     * get bean by name and type, but the bean is processed
+     *
+     * @param name
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public <T> T getBean(String name, Class<T> clazz) {
+        System.out.println(beanFactory.getBean(name).getSimpleName());
         return null;
+    }
+
+    public static void main(String[] args) {
+        ContextConfig config = new ContextConfig();
+        config.setPackages("com.qinjiangbo.aop.demo;com.qinjiangbo.aop.demo2");
+        ApplicationContext applicationContext = new ApplicationContext(config);
+        applicationContext.getBean("a", A.class);
     }
 }

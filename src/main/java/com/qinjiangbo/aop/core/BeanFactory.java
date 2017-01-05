@@ -61,4 +61,14 @@ public class BeanFactory {
         classList = null;
     }
 
+    /**
+     * get bean by name
+     *
+     * @param name
+     * @return
+     */
+    public Class<?> getBean(String name) {
+        return classMap.get(name);
+    }
+
 }
