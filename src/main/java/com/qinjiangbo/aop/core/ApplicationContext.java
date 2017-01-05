@@ -2,6 +2,7 @@ package com.qinjiangbo.aop.core;
 
 import com.qinjiangbo.aop.annotation.Service;
 import com.qinjiangbo.aop.config.ContextConfiguration;
+import com.qinjiangbo.aop.core.factory.BeanFactory;
 import com.qinjiangbo.aop.demo.A;
 import com.qinjiangbo.aop.demo.B;
 import com.qinjiangbo.aop.util.BeanUtils;

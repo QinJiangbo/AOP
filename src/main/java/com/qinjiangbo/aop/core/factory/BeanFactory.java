@@ -1,4 +1,4 @@
-package com.qinjiangbo.aop.core;
+package com.qinjiangbo.aop.core.factory;
 
 import com.qinjiangbo.aop.annotation.AspectJ;
 import com.qinjiangbo.aop.exception.ConflictedBeanException;
