@@ -163,11 +163,4 @@ public class PackageUtils {
             }
         }
     }
-
-    public static void main(String[] args) {
-        List<Class<?>> classList = findClassList("com.qinjiangbo.spring", true, Bean.class);
-        for (Class c : classList) {
-            System.out.println(c.getName());
-        }
-    }
 }
