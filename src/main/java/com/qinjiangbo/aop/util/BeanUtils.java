@@ -13,6 +13,7 @@ public class BeanUtils {
      * get bean by name and type, but the bean is processed
      *
      * @param name
+     * @param clazz0
      * @param target
      * @param <T>
      * @return
@@ -36,6 +37,7 @@ public class BeanUtils {
      * get bean by name and type if parameters provided
      *
      * @param name
+     * @param clazz0
      * @param target
      * @param args
      * @param <T>
