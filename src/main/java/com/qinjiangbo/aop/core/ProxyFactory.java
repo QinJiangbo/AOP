@@ -8,12 +8,12 @@ import java.util.List;
  * @date: 06/01/2017 12:29 PM
  * @author: qinjiangbo@github.io
  */
-public class ProxyManager {
+public class ProxyFactory {
 
     private Class<?> targetClass;
     private List<Proxy> proxyList;
 
-    public ProxyManager(Class<?> targetClass, List<Proxy> proxyList) {
+    public ProxyFactory(Class<?> targetClass, List<Proxy> proxyList) {
         this.targetClass = targetClass;
         this.proxyList = proxyList;
     }

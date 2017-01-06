@@ -1,7 +1,7 @@
 package com.qinjiangbo.aop.demo;
 
 import com.qinjiangbo.aop.core.Proxy;
-import com.qinjiangbo.aop.core.ProxyManager;
+import com.qinjiangbo.aop.core.ProxyFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,8 +17,8 @@ public class UserServiceProxyTest {
         proxyList.add(new BeforeProxy());
         proxyList.add(new AfterProxy());
 
-        ProxyManager proxyManager = new ProxyManager(UserService.class, proxyList);
-        UserService userService = proxyManager.createProxy();
+        ProxyFactory proxyFactory = new ProxyFactory(UserService.class, proxyList);
+        UserService userService = proxyFactory.createProxy();
         userService.login("amy", "123456");
     }
 }
