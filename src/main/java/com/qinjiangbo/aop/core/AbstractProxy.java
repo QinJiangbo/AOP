@@ -8,6 +8,8 @@ import java.lang.reflect.Method;
  */
 public abstract class AbstractProxy implements Proxy{
 
+    public abstract void advice(AspectCut aspectCut);
+
     @Override
     public void doProxy(ProxyChain proxyChain) {
         Class<?> clazz = proxyChain.getTargetClass();
@@ -15,15 +17,23 @@ public abstract class AbstractProxy implements Proxy{
         Object[] args = proxyChain.getTargetArgs();
 
         try {
-            before(clazz, method, args);
-            proxyChain.doProxyChain();
-            afterReturning(clazz, method, args);
+            if (filter(clazz, method, args)) {
+                before(clazz, method, args);
+                proxyChain.doProxyChain();
+                afterReturning(clazz, method, args);
+            } else {
+                proxyChain.doProxyChain();
+            }
         } catch (Throwable throwable) {
             afterThrowing(clazz, method, args, throwable);
         } finally {
             after(clazz, method, args);
         }
 
+    }
+
+    public boolean filter(Class<?> clazz, Method method, Object[] args) {
+        return true;
     }
 
     /**

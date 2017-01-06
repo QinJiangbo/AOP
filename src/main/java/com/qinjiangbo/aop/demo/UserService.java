@@ -10,4 +10,9 @@ public class UserService {
         System.out.println("username[" + userName + "] and password[" + password + "] are correct!");
         return true;
     }
+
+    public void register(String userName) {
+        System.out.println("register " + userName + "!");
+    }
+
 }

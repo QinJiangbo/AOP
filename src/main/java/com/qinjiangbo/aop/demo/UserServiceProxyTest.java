@@ -1,24 +1,20 @@
 package com.qinjiangbo.aop.demo;
 
-import com.qinjiangbo.aop.core.Proxy;
 import com.qinjiangbo.aop.core.ProxyFactory;
+import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.List;
 
 /**
- * @date: 06/01/2017 1:33 PM
+ * @date: 06/01/2017 5:08 PM
  * @author: qinjiangbo@github.io
  */
 public class UserServiceProxyTest {
 
-    public static void main(String[] args) {
-        List<Proxy> proxyList = new LinkedList<>();
-        proxyList.add(new BeforeProxy());
-        proxyList.add(new AfterProxy());
-
-        ProxyFactory proxyFactory = new ProxyFactory(UserService.class, proxyList);
+    @Test
+    public void test() {
+        UserServiceAspect aspect = new UserServiceAspect();
+        ProxyFactory proxyFactory = new ProxyFactory(UserService.class, aspect);
         UserService userService = proxyFactory.createProxy();
-        userService.login("amy", "123456");
+        userService.login("Richard", "123456");
     }
 }
