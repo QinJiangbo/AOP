@@ -26,18 +26,45 @@ public abstract class AbstractProxy implements Proxy{
 
     }
 
+    /**
+     * before the method executed
+     *
+     * @param clazz
+     * @param method
+     * @param args
+     */
     public void before(Class<?> clazz, Method method, Object[] args) {
 
     }
 
+    /**
+     * after the method returns
+     * @param clazz
+     * @param method
+     * @param args
+     */
     public void afterReturning(Class<?> clazz, Method method, Object[] args) {
 
     }
 
+    /**
+     * no matter how the method ends, the block will be executed</br>
+     * same as finally in try...catch blocks
+     * @param clazz
+     * @param method
+     * @param args
+     */
     public void after(Class<?> clazz, Method method, Object[] args) {
 
     }
 
+    /**
+     * after the method throws an exception or error
+     * @param clazz
+     * @param method
+     * @param args
+     * @param throwable
+     */
     public void afterThrowing(Class<?> clazz, Method method, Object[] args, Throwable throwable) {
 
     }
