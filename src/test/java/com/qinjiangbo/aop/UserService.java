@@ -1,4 +1,4 @@
-package com.qinjiangbo.aop.demo;
+package com.qinjiangbo.aop;
 
 /**
  * @date: 06/01/2017 1:26 PM

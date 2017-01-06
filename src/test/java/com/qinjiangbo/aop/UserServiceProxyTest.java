@@ -1,4 +1,4 @@
-package com.qinjiangbo.aop.demo;
+package com.qinjiangbo.aop;
 
 import com.qinjiangbo.aop.core.ProxyFactory;
 import org.junit.Test;

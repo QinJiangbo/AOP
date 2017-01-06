@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
  * @date: 06/01/2017 12:34 PM
  * @author: qinjiangbo@github.io
  */
-public abstract class AbstractProxy implements Proxy{
+public abstract class AbstractProxy implements Proxy {
 
     public abstract void advice(AspectCut aspectCut);
 
@@ -16,18 +16,19 @@ public abstract class AbstractProxy implements Proxy{
         Method method = proxyChain.getTargetMethod();
         Object[] args = proxyChain.getTargetArgs();
 
-        try {
-            if (filter(clazz, method, args)) {
+        if (filter(clazz, method, args)) {
+            try {
                 before(clazz, method, args);
                 proxyChain.doProxyChain();
                 afterReturning(clazz, method, args);
-            } else {
-                proxyChain.doProxyChain();
+
+            } catch (Throwable throwable) {
+                afterThrowing(clazz, method, args, throwable);
+            } finally {
+                after(clazz, method, args);
             }
-        } catch (Throwable throwable) {
-            afterThrowing(clazz, method, args, throwable);
-        } finally {
-            after(clazz, method, args);
+        } else {
+            proxyChain.doProxyChain();
         }
 
     }
@@ -49,6 +50,7 @@ public abstract class AbstractProxy implements Proxy{
 
     /**
      * after the method returns
+     *
      * @param clazz
      * @param method
      * @param args
@@ -60,6 +62,7 @@ public abstract class AbstractProxy implements Proxy{
     /**
      * no matter how the method ends, the block will be executed</br>
      * same as finally in try...catch blocks
+     *
      * @param clazz
      * @param method
      * @param args
@@ -70,6 +73,7 @@ public abstract class AbstractProxy implements Proxy{
 
     /**
      * after the method throws an exception or error
+     *
      * @param clazz
      * @param method
      * @param args

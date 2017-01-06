@@ -1,4 +1,4 @@
-package com.qinjiangbo.aop.demo;
+package com.qinjiangbo.aop;
 
 import com.qinjiangbo.aop.annotation.After;
 import com.qinjiangbo.aop.annotation.Before;
@@ -10,8 +10,18 @@ import com.qinjiangbo.aop.annotation.Before;
 public class UserServiceAspect {
 
     @Before("login")
+    public void logBefore0() {
+        System.out.println("Before entering into system...");
+    }
+
+    @Before("login")
     public void logBefore() {
         System.out.println("Before logging into system...");
+    }
+
+    @After("login")
+    public void logAfter0() {
+        System.out.println("After logging into system...");
     }
 
     @After("register")
