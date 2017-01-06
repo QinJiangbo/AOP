@@ -13,7 +13,8 @@ import org.springframework.stereotype.Component;
 public class FileServiceAspect {
 
     @Around("execution(* com.qinjiangbo.spring.aop.FileService.copy(..))")
-    public Object exeAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object exeAround(ProceedingJoinPoint proceedingJoinPoint)
+            throws Throwable {
         logBefore(proceedingJoinPoint);
         Object result = proceedingJoinPoint.proceed();
         logAfter(proceedingJoinPoint);
@@ -21,48 +22,20 @@ public class FileServiceAspect {
     }
 
     @Around("@annotation(SysLog)")
-    public Object tagAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object tagAround(ProceedingJoinPoint proceedingJoinPoint)
+            throws Throwable {
         System.out.println("Log printed with @SysLog annotation.");
         Object result = proceedingJoinPoint.proceed();
         return result;
     }
 
-    @Before("execution(* com.qinjiangbo.spring.aop.FileService.*(..))")
-    public void exeBefore() throws Throwable {
-        System.out.println("@Before executed!");
-    }
-
-    @After("execution(* com.qinjiangbo.spring.aop.FileService.copy(..))")
-    public void exeAfter() throws Throwable {
-        System.out.println("@After executed!");
-    }
-
-    @Pointcut("execution(* com.qinjiangbo.spring.aop.FileService.welcome())")
-    public void welcome() {
-
-    }
-
-    @Before("welcome()")
-    public void beforeWelcome2() {
-        System.out.println("@Before Welcome2!");
-    }
-
-    @Before("welcome()")
-    public void beforeWelcome() {
-        System.out.println("@Before Welcome!");
-    }
-
-    /**
-     * 记录方法执行前日志
-     */
     private void logBefore(ProceedingJoinPoint proceedingJoinPoint) {
-        System.out.println(this.getClass().getName() + " >>> " + "before " + proceedingJoinPoint.getSignature().getName() + " invoked!");
+        System.out.println(this.getClass().getName() + " @@@ " + "before "
+                + proceedingJoinPoint.getSignature().getName() + " invoked!");
     }
 
-    /**
-     * 记录方法后日志
-     */
     private void logAfter(ProceedingJoinPoint proceedingJoinPoint) {
-        System.out.println(this.getClass().getName() + " >>> " + "after " + proceedingJoinPoint.getSignature().getName() + " invoked!");
+        System.out.println(this.getClass().getName() + " @@@ " + "after "
+                + proceedingJoinPoint.getSignature().getName() + " invoked!");
     }
 }

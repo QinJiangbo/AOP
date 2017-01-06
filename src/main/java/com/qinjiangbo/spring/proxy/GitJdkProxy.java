@@ -16,12 +16,6 @@ public class GitJdkProxy implements InvocationHandler {
         this.target = target;
     }
 
-    /**
-     * 得到代理对象
-     *
-     * @param <T>
-     * @return
-     */
     public <T> T getProxy() {
         return (T) Proxy.newProxyInstance(
                 target.getClass().getClassLoader(),
@@ -31,24 +25,21 @@ public class GitJdkProxy implements InvocationHandler {
     }
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method,
+                         Object[] args) throws Throwable {
         logBefore();
         Object result = method.invoke(target, args);
         logAfter();
         return result;
     }
 
-    /**
-     * 记录方法执行前日志
-     */
     private void logBefore() {
-        System.out.println(this.getClass().getName() + " >>> " + "before fork() invoked!");
+        System.out.println(this.getClass().getName() + " @@@ "
+                + "before fork() invoked!");
     }
 
-    /**
-     * 记录方法后日志
-     */
     private void logAfter() {
-        System.out.println(this.getClass().getName() + " >>> " + "after fork() invoked!");
+        System.out.println(this.getClass().getName() + " @@@ "
+                + "after fork() invoked!");
     }
 }

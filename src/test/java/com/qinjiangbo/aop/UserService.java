@@ -7,7 +7,8 @@ package com.qinjiangbo.aop;
 public class UserService {
 
     public boolean login(String userName, String password) {
-        System.out.println("username[" + userName + "] and password[" + password + "] are correct!");
+        System.out.println("username[" + userName + "] " +
+                "and password[" + password + "] are correct!");
         return true;
     }
 

@@ -20,12 +20,12 @@ public class GitStaticProxy implements Service {
     }
 
     private void logBefore() {
-        System.out.println(this.getClass().getName() + " >>> "
+        System.out.println(this.getClass().getName() + " @@@ "
                 + "before fork() invoked!");
     }
 
     private void logAfter() {
-        System.out.println(this.getClass().getName() + " >>> "
+        System.out.println(this.getClass().getName() + " @@@ "
                 + "after fork() invoked!");
     }
 
