@@ -6,14 +6,8 @@ package com.qinjiangbo.spring.proxy;
  */
 public class GitService implements Service {
 
-    /**
-     * 拷贝某个仓库
-     *
-     * @param repository
-     */
     @Override
     public void fork(String repository) {
         System.out.println("fork " + repository + " successfully!");
     }
-
 }
