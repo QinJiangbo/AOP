@@ -13,7 +13,8 @@ public class UserServiceProxyTest {
     @Test
     public void test() {
         UserServiceAspect aspect = new UserServiceAspect();
-        ProxyFactory proxyFactory = new ProxyFactory(UserService.class, aspect);
+        ProxyFactory proxyFactory =
+                new ProxyFactory(UserService.class, aspect);
         UserService userService = proxyFactory.createProxy();
         userService.login("Richard", "123456");
     }
