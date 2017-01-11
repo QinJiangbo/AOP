@@ -1,8 +1,5 @@
 package com.qinjiangbo.spring.proxy;
 
-import com.qinjiangbo.spring.proxy.GitAopProxy;
-import com.qinjiangbo.spring.proxy.GitService;
-import com.qinjiangbo.spring.proxy.Service;
 import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
 
